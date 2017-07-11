@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.admin.ich">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".modules.Login.LoginPageActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".modules.Home.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".modules.Home.MenuTab.TabviewActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".modules.Login.SignupActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCrkS0Ux-uFiFt156kNN3DPrExm6HQTzmE" />
+
+        <activity android:name=".modules.Home.MenuTab.CartActivity" />
+        <activity android:name=".modules.BaseActivity" />
+        <activity android:name=".modules.Home.MenuTab.MenuOptionActivity" />
+        <activity android:name=".modules.Home.MenuTab.CartMenuOptionActivity" />
+        <activity android:name=".modules.Home.Checkout.CheckoutActivity"></activity>
+    </application>
+
+</manifest>

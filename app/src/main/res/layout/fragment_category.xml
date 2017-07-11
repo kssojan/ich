@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <LinearLayout
+        android:id="@+id/sectiontab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f3f3f3"
+        android:padding="@dimen/text_padding"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="end|center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_veg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Veg"
+                android:textStyle="bold"
+
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_1" />
+
+            <View
+                android:layout_width="45dp"
+                android:visibility="invisible"
+                android:id="@+id/vegline"
+                android:layout_height="@dimen/indicator_size"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorAccent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_nonveg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Non Veg"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_1" />
+
+            <View
+                android:layout_width="95dp"
+                android:layout_height="@dimen/indicator_size"
+                android:id="@+id/nonvegline"
+
+                android:visibility="invisible"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorAccent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All"
+                android:textStyle="bold"
+
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_1" />
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="@dimen/indicator_size"
+                android:id="@+id/allline"
+                android:visibility="invisible"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorAccent" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_menus"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/sectiontab"
+        android:layout_marginBottom="@dimen/header_text_size">
+
+    </android.support.v7.widget.RecyclerView>
+
+<!--
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#fff"
+        android:orientation="horizontal"
+        android:padding="@dimen/text_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_weight=".9"
+                android:id="@+id/tv_location"
+                android:drawableLeft="@drawable/location"
+                android:drawablePadding="@dimen/text_size_1"
+                android:gravity="center_vertical"
+                android:text="Al-Jumailiyah"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_1" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <include layout="@layout/cart_layout"
+
+                    />
+
+                <TextView
+                    android:id="@+id/totalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/web_size"
+                    android:gravity="center_vertical"
+                    android:text="Total: _ _ _"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/arrow" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+-->
+</RelativeLayout>
