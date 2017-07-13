@@ -386,7 +386,7 @@ public class MenuOptionActivity extends AppCompatActivity implements AdapterView
         optionJson.setMenu_option_value_id(menuListRadio.get(position).getMenuOptionValueId());
         optionJson.setValue(menuListRadio.get(position).getValue());
         optionJson.setOption_price(menuListRadio.get(position).getPrice());
-        double total_price = (Integer.parseInt(count) * Double.parseDouble(menuListRadio.get(position).getPrice().substring(3).trim()));
+        double total_price = (Integer.parseInt(count) * Double.parseDouble(menuListRadio.get(position).getPrice().trim()));
         optionJson.setOption_total(String.valueOf(total_price));
         menuListOptionRadio.add(optionJson);
 

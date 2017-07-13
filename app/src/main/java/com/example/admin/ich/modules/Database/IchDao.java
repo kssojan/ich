@@ -372,8 +372,8 @@ public class IchDao {
     public ArrayList<Menu> getAllCartItem() {
         ArrayList<Menu> countyList = new ArrayList<Menu>();
         openDB();
-        String query = "SELECT * FROM " + ColumnID.MENU_TABLE;
-                /*+ " LEFT JOIN " + ColumnID.MENU_OPTION_TABLE_CHECKBOX + " ON "
+        String query = "SELECT distinct * FROM " + ColumnID.MENU_TABLE;
+               /* + " LEFT JOIN " + ColumnID.MENU_OPTION_TABLE_CHECKBOX + " ON "
                 + ColumnID.MENU_TABLE + "." + ColumnID.MENU_ID + " = "
                 + ColumnID.MENU_OPTION_TABLE_CHECKBOX + "." + ColumnID.MENU_ID ;*/
         Cursor cursor = database.rawQuery(query, null);
@@ -414,7 +414,7 @@ public class IchDao {
         ArrayList<Menu> countyList = new ArrayList<Menu>();
         openDB();
         String query = "SELECT * FROM " + ColumnID.MENU_OPTION_TABLE_CHECKBOX
-                + " where " + ColumnID.MENU_ID + " = " + id;
+                + " where " + ColumnID.MENU_ID + " = " + id ;
 
         Cursor cursor = database.rawQuery(query, null);
 
@@ -432,6 +432,47 @@ public class IchDao {
                     .getColumnIndex(ColumnID.VALUE)));
             county.setValuePrice(cursor.getString(cursor
                     .getColumnIndex(ColumnID.OPTION_PRICE)));
+            county.setValuePriceTotal(cursor.getString(cursor
+                    .getColumnIndex(ColumnID.OPTION_TOTAL)));
+            county.setMenuOptionId(cursor.getString(cursor
+                    .getColumnIndex(ColumnID.MENU_OPTION_ID)));
+
+
+
+
+            countyList.add(county);
+
+        }
+        return countyList;
+
+    }
+
+    public ArrayList<Menu> getAllCartOptionItemCheck(String id,String optionid) {
+        ArrayList<Menu> countyList = new ArrayList<Menu>();
+        openDB();
+        String query = "SELECT * FROM " + ColumnID.MENU_OPTION_TABLE_CHECKBOX
+                + " where " + ColumnID.MENU_ID + " = " + id +" and "+ ColumnID.MENU_OPTION_ID + " = " + optionid + optionid.contains(ColumnID.MENU_OPTION_ID ) ;
+
+        Cursor cursor = database.rawQuery(query, null);
+
+
+        while (cursor.moveToNext()) {
+            Menu county = new Menu();
+
+            county.setMenuId(cursor.getString(cursor
+                    .getColumnIndex(ColumnID.MENU_ID)));
+            county.setCount(cursor.getString(cursor
+                    .getColumnIndex(ColumnID.COUNT)));
+            county.setValueId(cursor.getString(cursor
+                    .getColumnIndex(ColumnID.MENU_OPTION_VALUE_ID)));
+            county.setValueName(cursor.getString(cursor
+                    .getColumnIndex(ColumnID.VALUE)));
+            county.setValuePrice(cursor.getString(cursor
+                    .getColumnIndex(ColumnID.OPTION_PRICE)));
+            county.setValuePriceTotal(cursor.getString(cursor
+                    .getColumnIndex(ColumnID.OPTION_TOTAL)));
+            county.setMenuOptionId(cursor.getString(cursor
+                    .getColumnIndex(ColumnID.MENU_OPTION_ID)));
 
 
 

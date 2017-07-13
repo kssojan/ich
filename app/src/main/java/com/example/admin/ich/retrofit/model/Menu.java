@@ -5,8 +5,8 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Menu {
 
@@ -57,21 +57,34 @@ public class Menu {
     @Expose
     private String imagePath;
 
-    @SerializedName("sample")
+    @SerializedName("options")
     @Expose
-    HashMap<String, Object> dataToPass = new LinkedHashMap<>();
+    HashMap<String, List<Map<String, String>>> dataToPass = new HashMap<String, List<Map<String, String>>>();
 
-    public HashMap<String, Object> getDataToPass() {
+    public HashMap<String, List<Map<String, String>>> getDataToPass() {
         return dataToPass;
     }
 
-    public void setDataToPass(HashMap<String, Object> dataToPass) {
+    public void setDataToPass(HashMap<String, List<Map<String, String>>> dataToPass) {
         this.dataToPass = dataToPass;
     }
+// List<Map<String, String>> dataToPass = new ArrayList<Map<String, String>>();
+
+/*
+    public List<Map<String, String>> getDataToPass() {
+        return dataToPass;
+    }
+
+    public void setDataToPass(List<Map<String, String>> dataToPass) {
+        this.dataToPass = dataToPass;
+    }
+*/
+
 
     @SerializedName("menu_options")
     @Expose
     private List<String> menuOptions = null;
+
     public List<String> getMenuOptions() {
         return menuOptions;
     }
@@ -210,9 +223,10 @@ public class Menu {
     }
 
     private String totalcount;
+    @SerializedName("qty")
+    @Expose
     private String count;
     private String menuOptionSelection;
-
 
 
     public String getMenuOptionSelection() {
@@ -240,32 +254,61 @@ public class Menu {
     }
 
 
-        public String getValueId() {
-            return valueId;
-        }
+    public String getValueId() {
+        return valueId;
+    }
 
-        public void setValueId(String valueId) {
-            this.valueId = valueId;
-        }
+    public void setValueId(String valueId) {
+        this.valueId = valueId;
+    }
 
-        public String getValueName() {
-            return valueName;
-        }
+    public String getValueName() {
+        return valueName;
+    }
 
-        public void setValueName(String valueName) {
-            this.valueName = valueName;
-        }
+    public void setValueName(String valueName) {
+        this.valueName = valueName;
+    }
 
-        public String getValuePrice() {
-            return valuePrice;
-        }
+    public String getValuePrice() {
+        return valuePrice;
+    }
 
-        public void setValuePrice(String valuePrice) {
-            this.valuePrice = valuePrice;
-        }
+    public void setValuePrice(String valuePrice) {
+        this.valuePrice = valuePrice;
+    }
 
-        private String valueId;
-        private String valueName;
-        private String valuePrice;
+    private String valueId;
+    private String valueName;
+    private String valuePrice;
+    private String menuOptionId;
+    private String comment;
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getMenuOptionId() {
+        return menuOptionId;
+    }
+
+    public void setMenuOptionId(String menuOptionId) {
+        this.menuOptionId = menuOptionId;
+    }
+
+    @SerializedName("subtotal")
+    @Expose
+    private String valuePriceTotal;
+
+    public String getValuePriceTotal() {
+        return valuePriceTotal;
+    }
+
+    public void setValuePriceTotal(String valuePriceTotal) {
+        this.valuePriceTotal = valuePriceTotal;
+    }
 }

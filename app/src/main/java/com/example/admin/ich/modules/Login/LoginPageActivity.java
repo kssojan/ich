@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.admin.ich.R;
+import com.example.admin.ich.modules.AppController;
 import com.example.admin.ich.modules.BaseActivity;
 import com.example.admin.ich.modules.Home.HomeActivity;
 
@@ -75,6 +76,9 @@ public class LoginPageActivity extends BaseActivity implements View.OnClickListe
                 break;
             case R.id.tv_guest:
                 session.setLogin(false);
+
+                AppController.setString(getApplicationContext(), "ich_name", "Guest");
+                AppController.setString(getApplicationContext(), "ich_email", "guest emil");
                 Intent intentG = new Intent(LoginPageActivity.this, HomeActivity.class);
                 intentG.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intentG);

@@ -14,8 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.admin.ich.R;
+import com.example.admin.ich.modules.AppController;
 import com.example.admin.ich.modules.Home.MenuTab.TabviewActivity;
 import com.example.admin.ich.modules.Login.LoginPageActivity;
 import com.example.admin.ich.modules.Login.SessionManager;
@@ -41,6 +43,7 @@ public class HomeActivity extends AppCompatActivity
     NavigationView navigationView;
     CategoryListAdapter categoryListAdapter;
     private SessionManager session;
+    TextView tvName,tvEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +64,13 @@ public class HomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
 
-
+        View headerLayout = navigationView.getHeaderView(0);
+        tvName = (TextView) headerLayout.findViewById(R.id.tvCustomerName);
+        tvEmail = (TextView) headerLayout.findViewById(R.id.tvCustomerEmail);
+        String name = AppController.getString(getApplicationContext(), "ich_name");
+        String email = AppController.getString(getApplicationContext(), "ich_email");
+        tvEmail.setText(email);
+        tvName.setText(name);
         /*categoryListAdapter = new CategoryListAdapter(categoryList, R.layout.item_categories_list, getApplicationContext());
         rvCategories.setAdapter(categoryListAdapter);*/
         setupClickListener();

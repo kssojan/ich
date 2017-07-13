@@ -5,6 +5,7 @@ import com.example.admin.ich.retrofit.model.CategoriesModel;
 import com.example.admin.ich.retrofit.model.CountryResponse;
 import com.example.admin.ich.retrofit.model.MenuOption.MenuOptionResponse;
 import com.example.admin.ich.retrofit.model.Menumodel;
+import com.example.admin.ich.retrofit.model.SignInResponse;
 import com.example.admin.ich.retrofit.model.SignupResponse;
 
 import retrofit2.Call;
@@ -52,5 +53,11 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("Registration_api/user_login")
-    Call<SignupResponse> Signin(@Field("email") String email, @Field("password") String password);
+    Call<SignInResponse> Signin(@Field("email") String email, @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST("Order_api/user_order_details")
+    Call<SignupResponse> PostArray( @Field("cart_contents") String password);
+
+
 }

@@ -20,7 +20,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.admin.ich.R;
 import com.example.admin.ich.modules.BaseActivity;
@@ -276,7 +275,7 @@ public class CartActivity extends BaseActivity implements View.OnClickListener {
         double sumOption = 0;
         for (j = 0; j < menuTotalOption.size(); j++)
             sumOption += menuTotalOption.get(j);
-        Toast.makeText(CartActivity.this, String.valueOf(menuTotalOption), Toast.LENGTH_SHORT).show();
+
 
         tv_total.setText(String.valueOf(df.format(sum + sumOption)));
         //  tv_total.setText(String.valueOf(dao.getTotal()));

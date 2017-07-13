@@ -13,7 +13,7 @@ import com.example.admin.ich.modules.Home.HomeActivity;
 import com.example.admin.ich.modules.Login.SessionManager;
 import com.example.admin.ich.retrofit.ApiClient;
 import com.example.admin.ich.retrofit.ApiInterface;
-import com.example.admin.ich.retrofit.model.SignupResponse;
+import com.example.admin.ich.retrofit.model.SignInResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,7 +37,7 @@ RelativeLayout rootViewsnack;
 
     }
 
-    public void signinUser(String email, String password, final String from) {
+    public void signinUser(final String email, String password, final String from) {
         final ProgressDialog progressDialog = new ProgressDialog(context);
 
         progressDialog.setMessage("loading");
@@ -46,14 +46,17 @@ RelativeLayout rootViewsnack;
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
 
-        Call<SignupResponse> call = apiService.Signin(email, password);
-        call.enqueue(new Callback<SignupResponse>() {
+        Call<SignInResponse> call = apiService.Signin(email, password);
+        call.enqueue(new Callback<SignInResponse>() {
             @Override
-            public void onResponse(Call<SignupResponse> call, retrofit2.Response<SignupResponse> response) {
+            public void onResponse(Call<SignInResponse> call, retrofit2.Response<SignInResponse> response) {
                 progressDialog.hide();
                 if (response.body().getStatus()) {
                     session.setLogin(true);
-                    AppController.setString(getApplicationContext(), "ich_customer_id", response.body().getCstomerId());
+                    AppController.setString(getApplicationContext(), "ich_customer_id", response.body().getCustomerId());
+                    AppController.setString(getApplicationContext(), "ich_name", response.body().getCustomerName());
+                    AppController.setString(getApplicationContext(), "ich_location_id", response.body().getLocation().getLocationId());
+                    AppController.setString(getApplicationContext(), "ich_email", email);
                     if (from.equals("login")) {
                         Intent intent = new Intent(context, HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -71,7 +74,7 @@ RelativeLayout rootViewsnack;
             }
 
             @Override
-            public void onFailure(Call<SignupResponse> call, Throwable t) {
+            public void onFailure(Call<SignInResponse> call, Throwable t) {
                 // Log error here since request failed
                 //progressDialog.dismiss();
 
